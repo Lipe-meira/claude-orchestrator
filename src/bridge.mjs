@@ -16,6 +16,7 @@ export const taskSchema = z.object({
 const configSchema = z.object({
   claudeCommand: z.string().min(1).default('claude'),
   projects: z.record(z.string(), z.string().min(1)),
+  claudeProjectsDirectory: z.string().min(1).optional(),
   stateDirectory: z.string().min(1).default('.orchestrator'),
   timeoutMs: z.number().int().min(100).max(600000).default(120000)
 }).strict();
@@ -27,7 +28,8 @@ export async function loadConfig(file = process.env.ORCHESTRATOR_CONFIG || 'orch
   for (const [name, folder] of Object.entries(config.projects)) projects[name] = await realpath(resolve(dirname(path), folder));
   if (!Object.keys(projects).length) throw new Error('Cadastre pelo menos um projeto no arquivo de configuração.');
   if (config.claudeCommand !== 'claude' && !isAbsolute(config.claudeCommand)) throw new Error('claudeCommand deve ser claude ou um caminho absoluto para o executável.');
-  return { ...config, projects, stateDirectory: resolve(dirname(path), config.stateDirectory) };
+  return { ...config, projects, stateDirectory: resolve(dirname(path), config.stateDirectory),
+    ...(config.claudeProjectsDirectory ? { claudeProjectsDirectory: resolve(dirname(path), config.claudeProjectsDirectory) } : {}) };
 }
 
 export function claudeArgs(task, session) {
