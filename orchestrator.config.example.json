@@ -1,0 +1,6 @@
+{
+  "claudeCommand": "claude",
+  "projects": { "orchestrator": "." },
+  "stateDirectory": ".orchestrator",
+  "timeoutMs": 120000
+}

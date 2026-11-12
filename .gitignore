@@ -1,0 +1,7 @@
+node_modules/
+orchestrator.config.json
+.orchestrator/
+*.log
+.env
+.env.*
+!.env.example
