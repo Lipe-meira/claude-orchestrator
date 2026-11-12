@@ -12,3 +12,10 @@ Data: 12/11/2026. Ambiente: Windows, Node.js 24.21.0, Claude Code 2.1.322, auten
 Não verificado: chamada pelo Chat normal; uso real de Read/Glob/Grep; continuidade em sessão real; disponibilidade de todos os modelos/esforços. As rotas de retomada e negação foram verificadas com um executor de teste.
 
 Tentativa de abrir `chatgpt.com/plugins` pelo navegador integrado encontrou página sem sessão autenticada. Não foi criada conexão, túnel ou chave. O teste local não comprova a disponibilidade do plugin no Chat normal da conta.
+
+## Leitura de sessões existentes — 12/11/2026
+
+- Testes automatizados ampliados para 19, incluindo consulta incremental com append, paginação de texto, filtro por projeto/sessão, exclusão de prompts/raciocínio/ferramentas, recuperação de gravação parcial e chamada das três ferramentas novas por um cliente MCP real.
+- O teste MCP usa um caminho de Claude inexistente: a leitura funciona sem iniciar o executável ou consumir uso de modelo.
+- Uma consulta MCP ao histórico real do `promo_bot` encontrou 3 sessões, sem sessões ignoradas. A mais recente tinha 50 registros de resposta de texto no primeiro acesso e 51 no segundo. Foram lidos os últimos 2 registros, validados o cursor sem novidades e a paginação de uma resposta truncada. Conteúdo privado e IDs reais não foram incluídos no Git.
+- O subcaso automatizado de link simbólico não foi executado: o Windows não autorizou criar o link de teste. Os demais testes do leitor passaram. Não foi testada captura de terminal ou conexão pelo Chat normal.

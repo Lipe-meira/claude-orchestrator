@@ -2,10 +2,10 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "claude-orchestrator",
   "version": "0.1.0",
-  "description": "Delega análises ao Claude Code local com modelo e esforço explícitos.",
+  "description": "Lê respostas das sessões do Claude Code CLI e permite delegar novas análises.",
   "author": { "name": "Lipe-meira" },
   "repository": "https://github.com/Lipe-meira/claude-orchestrator",
   "extensions": { "com.openai": { "requires_local_executor": true,
-    "interface": { "displayName": "Claude Orchestrator", "shortDescription": "Coordene o Claude Code local", "capabilities": [] }
+    "interface": { "displayName": "Claude Orchestrator", "shortDescription": "Leia respostas do Claude CLI", "capabilities": [] }
   } }
 }
